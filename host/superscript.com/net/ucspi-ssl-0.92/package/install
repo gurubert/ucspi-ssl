@@ -1,0 +1,5 @@
+#!/bin/sh -e
+package/compile ${1+"$@"}
+package/upgrade ${1+"$@"}
+package/man ${1+"$@"}
+package/run ${1+"$@"}

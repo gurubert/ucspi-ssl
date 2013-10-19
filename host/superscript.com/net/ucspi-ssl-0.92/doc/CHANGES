@@ -1,0 +1,120 @@
+20011209
+	Initial release.
+	version: 0.50
+
+20021207
+	Convert to new build project.
+	Update libraries.
+	Correct load ordering for ssl programs.
+
+20030118
+	Option to set TCP environment variables.
+	Option to set SSL environment variables a la mod_perl.
+	Added sslperl.
+	Correct closure handling in ssl_io.c.
+
+20030128
+	Correct setting of TCPREMOTEINFO.
+
+20040127
+	Improved env tracking in handlers.
+	Updated tests.
+
+20040204
+	Clean up signal handling, process usage.
+
+20040209
+	Added nN options to sslclient.
+
+20040313
+	Added conf-ssl.
+	Version 0.65.
+
+20040317
+	Delete conf-home.
+	Permit nN opts in sslclient.
+	Version 0.66.
+
+20040320
+	Allow sslclient to avoid server verification.
+	Support cipher selection.
+	Correct execution botch in sslperl.
+	Clean up ssl_io and signal interaction.
+	Version 0.67.
+
+20040502
+	Read SSL setup info before dropping privilege.
+	Version 0.68.
+
+20050417
+	Don't fail on setsid if already group leader (Gabriel Russell).
+	Add compatibility macros for older Perl.
+	Don't leak pointer returned from eval_pv.
+	Support for partial testing.
+	Remove dependency on daemontools from rts.
+
+20050515
+	Partial-install bug fix in package/upgrade.
+
+20050605
+	Don't lose file descriptors in sslclient (Paul Jarc).
+
+20050610
+	Close socket for deny rule (Fred Lindberg).
+
+20050703
+	Revise ssl_io.
+	Free ssl object in sslhandle.c.
+	Add progtimeout option.
+
+20050717
+	Version 0.70.
+
+20090811 
+	Included ucspi-ssl-0.70_ucspitls-0.6.patch (STARTTLS support)
+	originally designed and provided by Scott Gifford (FEH).
+
+20100319
+	Added Certchain support for sslserver and sslclient (FEH).
+
+20120217
+	Integration and added man-pages (FEH).
+	Version 0.80.
+
+20120921
+	Synced with ucspi-tcp6-0.95.
+	Version 0.82
+
+20121003
+	Fixed integration bug in ssl_very.c.
+	Included patches from Peter Conrad.
+	Version 0.83.
+
+20121005
+	Bug fix in sslserver. Several small
+	corrections.
+	Version 0.83a
+
+20121019
+	Fix for lorge X509 serial numbers on x86 (tx. Peter Conrad).
+	SAN DNSname has precedence over CN in subject.
+	Re-edited man pages and rts tests.
+	Version 0.84.
+
+20130602
+	Added IPv6 support (tx. to Felix von Leitner and Brandon Turner).
+	UI: Changed sslserver client cert call from '-i/-I' to '-z/-Z'
+	for compatibility reasons.
+	Added '-4/-6' support for client scripts.  
+	Version 0.90. 
+
+20130804
+	Added output environment variables TCP6* for sslserver.
+	sslperl, sslhandle, and sslprint are not IPv6 ready yet. 
+	Version 0.91 test.
+
+20130910
+	Added IPv6 capabilities to sslhandle, sslprint, sslperl.
+	Changed verification of X.509 certs. 
+	Removed obsolete socket_4 calls in sslserver.
+	Version 0.92 beta.

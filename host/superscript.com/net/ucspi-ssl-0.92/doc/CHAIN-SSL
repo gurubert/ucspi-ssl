@@ -1,0 +1,54 @@
+SSL UCSPI Certificate Chain Support
+-----------------------------------
+
+Scope:
+-----
+
+This version of UCSPI-SSL allows the SSL server to issue certificate chains.
+In this case, the SSL client does not need to verify the certificates on 
+his own behalf, rather the client uses the presented certificates from the server. 
+However, the final root certificate has to be known by the client.
+
+
+Usage:
+-----
+
+1. Concatinate all relevant X.509 certifcates in one file.
+   The first one is the certificate of the server, the last one
+   should be the root certificate.
+
+2. Tell the sslserver the name and location of this file.
+   Use the environment variable CERTCHAINFILE.
+
+3. Provide a separate keyfile for your own (the first certificate)
+   employing the environment variable KEYFILE.
+
+4. If this variable variable is present, it takes precedence over
+   CERTFILE.
+
+
+UI considerations:
+-----------------
+
+a) Providing a particular cipher for sslclient is now facilited with
+   option "-z cipher" instead of "-C cipher".
+
+b) Reversely, the location of the certificate chain file is available
+   via option "-C certchainfile".
+
+c) For sslserver use the environment variable CERTCHAINFILE.
+
+
+Security considerations:
+-----------------------
+
+Your own keyfile can be password protected.
+
+
+Performance considerations:
+--------------------------
+
+The server needs to open one thread per certificate.
+Thus, the server carries the burden to provide the certificates.
+
+Erwin Hoffmann - 2011-02-16

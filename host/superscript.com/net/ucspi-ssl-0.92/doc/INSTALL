@@ -1,0 +1,55 @@
+Installation supplements
+------------------------
+
+Within the ./src directory you find some conf-* files for your adjustments:
+
+1. Compilation      
+- conf-cc (don't need to be touched)
+- conf-ld (remove option '-m64' and/or replace it with your architecure; ie. installing on x86 needs removing this flag)
+- conf-ccperl (no adjustments required) 
+- conf-ldperl (no adjustments required)
+
+2. Installation
+- conf-tcpbin (path to the ucspi-tcp commands; usually /usr/local/bin)
+- conf-perl (no adjustments required)
+- conf-ssl (default; add path to additional openssl libraries; e.g. Kerberos)
+- man/conf-man (man page target) => /usr/share/man
+
+3. Certificate and key file handling -- these are parms declared for each server; thus may stay empty/untouched.
+   Default values MAY be provided as:
+- conf-cafile
+- conf-ccafile
+- conf-certchainfile
+- conf-certfile
+- conf-ciphers
+- conf-dhfile
+- conf-keyfile
+- conf-rsa (length of RSA cipher; 1024 bit)
+
+4. Installation procedure
+   Usually, you just install the package with
+
+- package/install
+
+or -- in case the Perl install failes --
+
+- package/install base
+- package/man
+
+5. Testing
+- package/rts -- or  --
+- package/rts base (if Perl is not installed/working).
+
+  The etc/ directory includes some X.509 certs and keyfiles
+  for testing. Have a look at those !
+
+6. ucspi-tcp dependencies 
+   The vanilla ucspi-tcp-0.88 package from Dan Bernstein does not support
+   building 'tcprules' with CIDR support. 
+
+   Download and install 'ucspi-tcp6' from 
+   http://www.fehcom.de/ipnet/ucpsi-tcp6.html.
+
+
+Erwin Hoffmann, Hoehn, 03-10-2012.
+

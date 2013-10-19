@@ -1,0 +1,30 @@
+#!/bin/sh
+shout() { echo "man: $@" >&2; }
+barf() { shout "fatal: $@"; exit 111; }
+safe() { "$@" || barf "cannot $@"; }
+
+umask 022
+[ -d man     ] || barf "no man directory"
+if [ -r man/conf-man ]
+then
+  manpath=`head -1 man/conf-man`
+else
+  manpath="/usr/share/man"
+fi
+
+for i in `find man -name "*[0-9]"`
+do
+  all="$all $i"
+done
+
+if [ $# -eq 0 ]
+then
+  for manfile in $all
+  do
+    mandir="man`echo $manfile | awk -F. '{print $NF}'`"
+    gzip $manfile && \
+    safe install -v -m 644 "$manfile.gz" $manpath/$mandir
+  done
+fi
+
+exit 0
